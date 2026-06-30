@@ -41,8 +41,9 @@ fi
 export AGATE_SOLVER_CONFIG='{"type": "multi", "params": {"parallel": true, "solver_configs": [{"type": "genetic", "params": {"population_size": '$batch_size'}}, {"type": "dpll"}]}}'
 
 # perform a quick warmup run
-$TOOL_NAME verify -h
-# $TOOL_NAME verify $VNNLIB_FILE --network N $ONNX_FILE --timeout 60
+./agate --version
+./agate verify -h
+# ./agate verify $VNNLIB_FILE --network N $ONNX_FILE --timeout 60
 
 # to skip a benchmark category, return non-zero
 if [ "$CATEGORY" = "smart_turn_multimodal_2026" ]; then
