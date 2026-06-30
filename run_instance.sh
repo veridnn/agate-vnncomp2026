@@ -28,6 +28,9 @@ echo ""
 TIMEOUT=${TIMEOUT%.*}
 
 # configure the solver
+if [ -f ".venv/bin/activate" ]; then
+	source .venv/bin/activate
+fi
 source "$SCRIPT_DIR/.env"
 # use the cpu if the onnx file is small
 if [ -f "$ONNX_FILE" ]; then
@@ -45,4 +48,4 @@ if [ "$CATEGORY" = "cgan2026" ]; then
 fi
 export AGATE_SOLVER_CONFIG='{"type": "multi", "params": {"parallel": true, "solver_configs": [{"type": "genetic", "params": {"population_size": '$batch_size'}}, {"type": "dpll"}]}}'
 
-./agate verify $VNNLIB_FILE $(scripts/vnncomp/parse_network_paths.py "$ONNX_FILE") --timeout $TIMEOUT > $RESULTS_FILE
+agate verify $VNNLIB_FILE $(scripts/vnncomp/parse_network_paths.py "$ONNX_FILE") --timeout $TIMEOUT > $RESULTS_FILE

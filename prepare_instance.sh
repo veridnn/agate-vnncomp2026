@@ -22,6 +22,9 @@ echo "Preparing $TOOL_NAME for benchmark instance in category '$CATEGORY' with o
 # killall -q python3
 
 # configure environment and solver
+if [ -f ".venv/bin/activate" ]; then
+	source .venv/bin/activate
+fi
 source "$SCRIPT_DIR/.env"
 # use the cpu if the onnx file is small
 if [ -f "$ONNX_FILE" ]; then
@@ -41,9 +44,9 @@ fi
 export AGATE_SOLVER_CONFIG='{"type": "multi", "params": {"parallel": true, "solver_configs": [{"type": "genetic", "params": {"population_size": '$batch_size'}}, {"type": "dpll"}]}}'
 
 # perform a quick warmup run
-./agate --version
-./agate verify -h
-# ./agate verify $VNNLIB_FILE --network N $ONNX_FILE --timeout 60
+agate --version
+agate verify -h
+# agate verify $VNNLIB_FILE --network N $ONNX_FILE --timeout 60
 
 # to skip a benchmark category, return non-zero
 if [ "$CATEGORY" = "smart_turn_multimodal_2026" ]; then
