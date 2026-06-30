@@ -22,8 +22,8 @@ echo "Preparing $TOOL_NAME for benchmark instance in category '$CATEGORY' with o
 # killall -q python3
 
 # configure environment and solver
-if [ -f ".venv/bin/activate" ]; then
-	source .venv/bin/activate
+if [ -f "$HOME/.venv/bin/activate" ]; then
+	source $HOME/.venv/bin/activate
 fi
 source "$SCRIPT_DIR/.env"
 # use the cpu if the onnx file is small

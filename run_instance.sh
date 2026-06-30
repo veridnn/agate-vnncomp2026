@@ -28,8 +28,8 @@ echo ""
 TIMEOUT=${TIMEOUT%.*}
 
 # configure the solver
-if [ -f ".venv/bin/activate" ]; then
-	source .venv/bin/activate
+if [ -f "$HOME/.venv/bin/activate" ]; then
+	source $HOME/.venv/bin/activate
 fi
 source "$SCRIPT_DIR/.env"
 # use the cpu if the onnx file is small
