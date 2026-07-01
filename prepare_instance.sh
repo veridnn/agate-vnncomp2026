@@ -46,7 +46,6 @@ export AGATE_SOLVER_CONFIG='{"type": "multi", "params": {"parallel": true, "solv
 # perform a quick warmup run
 agate --version
 agate verify -h
-# agate verify $VNNLIB_FILE --network N $ONNX_FILE --timeout 60
 
 # to skip a benchmark category, return non-zero
 if [ "$CATEGORY" = "smart_turn_multimodal_2026" ]; then
